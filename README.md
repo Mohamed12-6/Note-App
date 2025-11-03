@@ -44,6 +44,7 @@ Follow these steps to run the project locally 👇
 # 1️⃣ Clone the repository
 git clone () 
 
+
 # 2️⃣ Navigate into the folder
 cd NoteApp
 

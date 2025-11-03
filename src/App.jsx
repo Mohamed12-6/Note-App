@@ -8,21 +8,21 @@ import Login from './components/Authuncation/login/login'
 import Register from './components/Authuncation/register/register'
 import { RecoilRoot } from 'recoil'
 import AllNotes from './components/allNotes/allNotes'
+import ProtctedRouting from './components/ProtctedRouting/ProtctedRouting'
 
 function App() {
 
   let router=createBrowserRouter([
-    {path:"/",element:<Layout/>,children:[
-        {index:true,element:<Home/>},
+    {path:"",element:<Layout/>,children:[
+        {index:true,element:<ProtctedRouting><Home/></ProtctedRouting>},
+        {path:"/home",element:<ProtctedRouting><Home/></ProtctedRouting>},
 
-        {path:"/home",element:<Home/>},
         {path:"/Authuncation/login",element:<Login/>},
         {path:"/Authuncation/register",element:<Register/>},
 
         {path:"/allNotes", element:<AllNotes/>} ,
 
         {path:"*",element:<Notfound/>},
-
 
     ]}
   ])

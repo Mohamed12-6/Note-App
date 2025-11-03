@@ -8,7 +8,7 @@ export default function AllNotes() {
   const [notes, setNotes] = useState([]);
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
-  const notesPerPage = 20; // ✅ عرض 20 نوتة في كل صفحة
+  const notesPerPage = 20;
 
   useEffect(() => {
     const fetchNotes = async () => {
@@ -26,16 +26,14 @@ export default function AllNotes() {
     fetchNotes();
   }, []);
 
-  // الحسابات الخاصة بالصفحات
   const indexOfLastNote = currentPage * notesPerPage;
   const indexOfFirstNote = indexOfLastNote - notesPerPage;
   const currentNotes = notes.slice(indexOfFirstNote, indexOfLastNote);
   const totalPages = Math.ceil(notes.length / notesPerPage);
 
-  // توليد أرقام الصفحات الذكية
   const getPageNumbers = () => {
     const pages = [];
-    const maxVisible = 3; // ✅ عدد الصفحات المعروضة حول الصفحة الحالية
+    const maxVisible = 3;
     if (totalPages <= 7) {
       for (let i = 1; i <= totalPages; i++) pages.push(i);
     } else {
@@ -99,31 +97,34 @@ export default function AllNotes() {
 
       {/* Pagination */}
       {notes.length > notesPerPage && (
-        <div className="flex justify-center items-center gap-3 mt-12 flex-wrap">
+        <div className="flex flex-wrap justify-center items-center gap-2 sm:gap-3 mt-12">
           {/* Previous */}
           <button
             onClick={() => setCurrentPage((p) => Math.max(p - 1, 1))}
             disabled={currentPage === 1}
-            className={`w-10 h-10 flex items-center justify-center rounded-full transition ${
+            className={`w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center rounded-full transition ${
               currentPage === 1
                 ? "bg-gray-200 text-gray-400 cursor-not-allowed"
                 : "bg-blue-500 text-white hover:bg-blue-600 shadow"
             }`}
           >
-            <ChevronLeft size={18} />
+            <ChevronLeft size={16} className="sm:size-18" />
           </button>
 
           {/* Page Numbers */}
           {getPageNumbers().map((page, index) =>
             page === "..." ? (
-              <span key={index} className="px-2 text-gray-500">
+              <span
+                key={index}
+                className="px-1 sm:px-2 text-gray-500 text-sm sm:text-base"
+              >
                 ...
               </span>
             ) : (
               <button
                 key={page}
                 onClick={() => setCurrentPage(page)}
-                className={`w-10 h-10 flex items-center justify-center rounded-full border text-sm font-medium transition ${
+                className={`w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center rounded-full border text-xs sm:text-sm font-medium transition ${
                   currentPage === page
                     ? "bg-blue-600 text-white shadow"
                     : "bg-gray-100 text-gray-700 hover:bg-blue-100"
@@ -138,22 +139,20 @@ export default function AllNotes() {
           <button
             onClick={() => setCurrentPage((p) => Math.min(p + 1, totalPages))}
             disabled={currentPage === totalPages}
-            className={`w-10 h-10 flex items-center justify-center rounded-full transition ${
+            className={`w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center rounded-full transition ${
               currentPage === totalPages
                 ? "bg-gray-200 text-gray-400 cursor-not-allowed"
                 : "bg-blue-500 text-white hover:bg-blue-600 shadow"
             }`}
           >
-            <ChevronRight size={18} />
+            <ChevronRight size={16} className="sm:size-18" />
           </button>
         </div>
       )}
 
       {/* Register/Login CTA */}
       <div className="text-center mt-14 mb-8">
-        <p className="text-gray-600 mb-3 text-lg">
-          Want to add your own notes?
-        </p>
+        <p className="text-gray-600 mb-3 text-lg">Want to add your own notes?</p>
         <Link
           to="/Authuncation/register"
           className="bg-blue-500 text-white px-6 py-2.5 rounded-lg hover:bg-blue-600 transition text-base font-medium shadow-md"
