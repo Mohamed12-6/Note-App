@@ -7,7 +7,7 @@ If you're not logged in, you can still view **public notes** but cannot add new 
 
 ## 🚀 Live Demo
 
-👉 [Visit NoteApp Live]()
+👉 note-app-two-tau.vercel.app
 
 ---
 
