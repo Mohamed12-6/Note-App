@@ -6,11 +6,12 @@ import { Input } from "../../ui/input";
 import { useFormik } from "formik";
 import * as yup from "yup";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function Register() {
   const [msg, setMsg] = useState();
   const [loading, setLoading] = useState(false); // ✅ حالة التحميل
+  const navigate=useNavigate()
 
   async function handleSubmit(values) {
     try {
@@ -19,7 +20,11 @@ export default function Register() {
         "https://note-sigma-black.vercel.app/api/v1/users/signUp",
         values
       );
-
+ if (res.data?.msg?.toLowerCase().includes("done")) {
+        setTimeout(() => {
+          navigate("/Authuncation/login");
+        }, 2000);
+      }
       setMsg(res.data?.msg);
     } catch (error) {
       setMsg(error.response?.data?.msg);
