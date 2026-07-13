@@ -34,6 +34,7 @@ export default function Home() {
         "https://note-sigma-black.vercel.app/api/v1/notes",
         { headers: { token: `3b8ny__${token}` } }
       );
+
       if (res.data.msg === "done") {
         setNotes(res.data.notes);
         setNoteLength(res.data.notes.length);
@@ -86,7 +87,6 @@ export default function Home() {
     }
   }
 
-  // 🔹 Update Note
   async function updateNote(noteId, values) {
     setIsProcessing(true);
     try {
