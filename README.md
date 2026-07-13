@@ -2,9 +2,13 @@
 
 A modern and powerful **Sticky Notes Web Application** built with **React**, **Recoil**, **Formik**, and **Axios** — allowing users to **create, edit, and delete** personal notes securely.  
 Even without login, you can explore **public notes**, but registration is required to add your own.
+<<<<<<< HEAD
 
 🔗 **Live Demo:** [https://note-app-two-tau.vercel.app](https://note-app-two-tau.vercel.app)
+=======
+>>>>>>> 131987986df5c475de4ccd230edbd83425a9ee2e
 
+🔗 **Live Demo:** [https://note-app-two-tau.vercel.app]
 ---
 
 ## 🌟 Features
@@ -43,4 +47,7 @@ npm install
 
 # 4️⃣ Run the app
 npm run dev
+<<<<<<< HEAD
 
+=======
+>>>>>>> 131987986df5c475de4ccd230edbd83425a9ee2e
